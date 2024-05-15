@@ -2,3 +2,4 @@ PyAudio
 openai
 numpy
 requests
+audio-recorder-streamlit
