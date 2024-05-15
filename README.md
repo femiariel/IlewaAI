@@ -1,2 +1,3 @@
-# IlewaAI
+# IlewaAI App
 Benin Multimodal Hackhaton
+
