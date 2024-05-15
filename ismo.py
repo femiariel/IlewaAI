@@ -120,7 +120,7 @@ def save_new(audio_data, filename):
     # Assumant que les données suivantes sont extraites ou sont connues :
     channels = 2  # Stéréo
     sampwidth = 2  # Largeur d'échantillon en octets (16 bits -> 2 octets)
-    framerate = 44100  # Fréquence d'échantillonnage
+    framerate = 16000  # Fréquence d'échantillonnage
 
     # Ouvrir le fichier en mode écriture binaire
     wf = wave.open(filename, 'wb')
@@ -182,21 +182,16 @@ if language =="Yoruba":
                 tmpfile_name = tmpfile.name
                 save_new(audio_data, tmpfile_name)
                 
-            api_url = "http://fon-s2t-api.francecentral.azurecontainer.io/speech-to-text/" 
+            api_url = "http://yoruba-s2t-api.francecentral.azurecontainer.io/speech-to-text/" 
             transcription = send_to_api(api_url, data={}, files={'file': open(tmpfile_name, 'rb')})
             st.write("Transcription:")
             st.write(transcription)
-            api_translation_url="http://fon-t2t-api.francecentral.azurecontainer.io/translate/"
-            request_body = {
-               "text": transcription
-            }
-            response=requests.post(api_translation_url, json=request_body)
-            response_data= response.json()
-            translation=response_data.get('translated_text', 'Key not found')
-            st.write("Translation in French")
-            st.write(translation)
+            # Traduire la transcription en français
+            translation = translate_to_english(transcription)
             image= image_generation(translation)
-            st.image(image)
+            st.write("Translation in French:")
+            st.write(translation)
+            st.image(image, caption=translation)
     
    elif input_method == "Text":
         text_input = st.text_area("Enter Text")
@@ -232,11 +227,11 @@ if language =="Yoruba":
 
 if language == "Fon":
     if input_method == "Audio":
-        if st.button("Start Recording"):
-            audio_data = record_audio()
+        audio_data = audio_recorder(pause_threshold=2.0, sample_rate=16000)
+        if audio_data is not None:
             with tempfile.NamedTemporaryFile(delete=False, suffix='.wav') as tmpfile:
                 tmpfile_name = tmpfile.name
-                save_audio(audio_data, tmpfile_name)
+                save_new(audio_data, tmpfile_name)
         
             # URL de l'API selon la langue sélectionnée
             api_url = "http://fon-s2t-api.francecentral.azurecontainer.io/speech-to-text/" 
