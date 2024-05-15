@@ -186,6 +186,17 @@ if language =="Yoruba":
             transcription = send_to_api(api_url, data={}, files={'file': open(tmpfile_name, 'rb')})
             st.write("Transcription:")
             st.write(transcription)
+            api_translation_url="http://fon-t2t-api.francecentral.azurecontainer.io/translate/"
+            request_body = {
+               "text": transcription
+            }
+            response=requests.post(api_translation_url, json=request_body)
+            response_data= response.json()
+            translation=response_data.get('translated_text', 'Key not found')
+            st.write("Translation in French")
+            st.write(translation)
+            image= image_generation(translation)
+            st.image(image)
     
    elif input_method == "Text":
         text_input = st.text_area("Enter Text")
