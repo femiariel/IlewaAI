@@ -185,12 +185,12 @@ if language =="Yoruba":
             api_url = "http://yoruba-s2t-api.francecentral.azurecontainer.io/speech-to-text/" 
             transcription = send_to_api(api_url, data={}, files={'file': open(tmpfile_name, 'rb')})
             st.write("Transcription:")
-            st.write(transcription)
+            #st.write(transcription)
             # Traduire la transcription en français
             translation = translate_to_english(transcription)
             image= image_generation(translation)
             st.write("Translation in French:")
-            st.write(translation)
+            #st.write(translation)
             st.image(image, caption=translation)
     
    elif input_method == "Text":
@@ -201,7 +201,7 @@ if language =="Yoruba":
             translation = translate_to_english(text_input)
             image= image_generation(translation)
             st.write("Translation in English:")
-            st.write(translation)
+            #st.write(translation)
             st.image(image, caption=translation)
 
    elif input_method == "Upload File":
@@ -215,13 +215,13 @@ if language =="Yoruba":
             api_url = "http://yoruba-s2t-api.francecentral.azurecontainer.io/speech-to-text/" 
             transcription = send_to_api(api_url, data={}, files={'file': open(tmpfile_name, 'rb')})
             st.write("Transcription:")
-            st.write(transcription)
+            #st.write(transcription)
         
             # Traduire la transcription en français
             translation = translate_to_english(transcription)
             image= image_generation(translation)
             st.write("Translation in French:")
-            st.write(translation)
+            #st.write(translation)
             st.image(image)
             
 
@@ -237,7 +237,7 @@ if language == "Fon":
             api_url = "http://fon-s2t-api.francecentral.azurecontainer.io/speech-to-text/" 
             transcription = send_to_api(api_url, data={}, files={'file': open(tmpfile_name, 'rb')})
             st.write("Transcription:")
-            st.write(transcription)
+            #st.write(transcription)
             api_translation_url="http://fon-t2t-api.francecentral.azurecontainer.io/translate/"
             request_body = {
                "text": transcription
@@ -246,7 +246,7 @@ if language == "Fon":
             response_data= response.json()
             translation=response_data.get('translated_text', 'Key not found')
             st.write("Translation in French")
-            st.write(translation)
+            #st.write(translation)
             image= image_generation(translation)
             st.image(image)
 
@@ -262,7 +262,7 @@ if language == "Fon":
             translation=response_data.get('translated_text', 'Key not found')
             image=image_generation(translation)
             # Traduire la transcription en français
-            st.write(translation)
+            #st.write(translation)
             st.image(image, caption=translation)
 
     elif input_method == "Upload File":
@@ -276,7 +276,7 @@ if language == "Fon":
             api_url = "http://fon-s2t-api.francecentral.azurecontainer.io/speech-to-text/"  
             transcription = send_to_api(api_url, data={}, files={'file': open(tmpfile_name, 'rb')})
             st.write("Transcription:")
-            st.write(transcription)
+            #st.write(transcription)
             api_translation_url="http://fon-t2t-api.francecentral.azurecontainer.io/translate/"
             request_body = {
                "text": transcription
@@ -285,7 +285,7 @@ if language == "Fon":
             response_data= response.json()
             translation=response_data.get('translated_text', 'Key not found')
             st.write("Translation in French")
-            st.write(translation)
+            #st.write(translation)
             image= image_generation(translation)
             st.image(image)
     
