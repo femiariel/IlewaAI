@@ -48,8 +48,9 @@ https://github.com/votre-utilisateur/votre-depot.git
 - **Streamlit** : Pour la création de l'interface utilisateur et l'affichage des résultats.
 3. **Interface Utilisateur** :
   - **Interface** : Nous avons déployé l'application sur streamlit cloud: le lien pour y accéder est : https://ilewaai.streamlit.app/
-  - **API** : Nous avons déployé des APIs pour chaque moèle que nous utilisons et nous faisons appel à ces fichiers dans notre ismo.py pour effectuer les transcriptions et les translations.
+  - **API** : Nous avons déployé des APIs pour chaque moèle que nous utilisons et nous faisons appel à ces fichiers dans notre ismo.py pour effectuer les transcriptions et les translations.Ces modèles ont été déployés via Azure Container Instances grace à leur image Docker. Cela permet à n'importe qui de faire fonctionner notre code meme s'il n'a pas la puissance de calcul nécessaire.
   - **Modèle de traduction fon à français**: api : 'http://fon-t2t-api.francecentral.azurecontainer.io/'  et github: 'https://github.com/Ggasyd/fon-t2t-api'
   -  **Modèle de transcription fon à français** : api : 'http://fon-s2t-api.francecentral.azurecontainer.io/' et github: 'https://github.com/Ggasyd/fon-api'
   -  **Modèle de transcription yoruba à anglais** : api : 'http://yoruba-s2t-api.francecentral.azurecontainer.io/' et github : 'https://github.com/Ggasyd/ilewa-api'
+  -  **Devcontainer**: Mise en place d'un devcontainer pour s'assurer que les utilisateurs puissent avoir accès aux memes dépendances
 
