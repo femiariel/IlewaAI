@@ -187,7 +187,7 @@ if language =="Yoruba":
             st.write("Transcription:")
             st.write(transcription)
     
-    elif input_method == "Text":
+   elif input_method == "Text":
         text_input = st.text_area("Enter Text")
         if st.button("Submit"):
         
@@ -198,7 +198,7 @@ if language =="Yoruba":
             st.write(translation)
             st.image(image, caption=translation)
 
-    elif input_method == "Upload File":
+   elif input_method == "Upload File":
         uploaded_file = st.file_uploader("Choose a file")
         if uploaded_file is not None:
             with tempfile.NamedTemporaryFile(delete=False, suffix='.wav') as tmpfile:
