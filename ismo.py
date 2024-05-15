@@ -12,11 +12,11 @@ from io import BytesIO
 from PIL import Image
 
 
-stability_apikey=st.secrets["stability_api"]
+stability_apikey=st.secrets["STABILITY_API"]
 
 client = AzureOpenAI(
   azure_endpoint = "https://azureai-models.openai.azure.com/", 
-  api_key=st.secrets["api_key"] ,  
+  api_key=st.secrets["API_KEY"] ,  
   api_version="2024-02-15-preview"
 ) 
 
