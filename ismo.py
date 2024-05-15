@@ -10,7 +10,7 @@ import os
 from openai import AzureOpenAI
 from io import BytesIO
 from PIL import Image
-
+from audio_recorder_streamlit import audio_recorder
 
 stability_apikey=st.secrets["STABILITY_API"]
 
@@ -116,7 +116,26 @@ def save_audio(audio_data, filename):
     wf.close()
  
 
+def save_new(audio_data, filename):
+    # Assumant que les données suivantes sont extraites ou sont connues :
+    channels = 2  # Stéréo
+    sampwidth = 2  # Largeur d'échantillon en octets (16 bits -> 2 octets)
+    framerate = 44100  # Fréquence d'échantillonnage
 
+    # Ouvrir le fichier en mode écriture binaire
+    wf = wave.open(filename, 'wb')
+
+    # Configurer les paramètres du fichier audio
+    wf.setnchannels(channels)
+    wf.setsampwidth(sampwidth)
+    wf.setframerate(framerate)
+
+    # Écrire les données audio
+    wf.writeframes(audio_data)  # Écrire directement les données audio sans traitement supplémentaire
+
+    # Fermer le fichier
+    wf.close()
+  
 def send_to_api_translation(url, data):
     response = requests.post(url, data=data)
     if response.status_code == 200:
@@ -156,25 +175,17 @@ language = st.selectbox("Select Language", ["Yoruba", "Fon"])
 input_method = st.selectbox("Select Input Method", ["Audio", "Text", "Upload File"])
 
 if language =="Yoruba": 
-    if input_method == "Audio":
-        if st.button("Start Recording"):
-            audio_data = record_audio()
+   if input_method == "Audio":
+        audio_data = audio_recorder(pause_threshold=2.0, sample_rate=16000)
+        if audio_data is not None:
             with tempfile.NamedTemporaryFile(delete=False, suffix='.wav') as tmpfile:
                 tmpfile_name = tmpfile.name
-                save_audio(audio_data, tmpfile_name)
-        
-            # URL de l'API selon la langue sélectionnée
-            api_url = "http://yoruba-s2t-api.francecentral.azurecontainer.io/speech-to-text/" 
+                save_new(audio_data, tmpfile_name)
+                
+            api_url = "http://fon-s2t-api.francecentral.azurecontainer.io/speech-to-text/" 
             transcription = send_to_api(api_url, data={}, files={'file': open(tmpfile_name, 'rb')})
             st.write("Transcription:")
             st.write(transcription)
-        
-            # Traduire la transcription en français
-            translation = translate_to_english(transcription)
-            image= image_generation(translation)
-            st.write("Translation in French:")
-            st.write(translation)
-            st.image(image, caption=translation)
     
     elif input_method == "Text":
         text_input = st.text_area("Enter Text")
