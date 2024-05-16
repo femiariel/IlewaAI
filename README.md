@@ -10,7 +10,7 @@ This project uses a series of technologies to transcribe speech into text, trans
 ## Table of Content
 - [Installation](#installation)
 - [Utilisation](#utilisation)
-- [Used Technologies](#usedtechnologies)
+- [Technologies](#technologies)
 - [Contribution](#contribution)
 - [Licence](#licence)
 ## Installation
@@ -41,7 +41,7 @@ https://github.com/femiariel/IlewaAI.git
   - **Translation** : The text is translated into a language supported by Stable Diffusion using NLLB.
   - **Image generation** : An image is generated from the translated text with Stable Diffusion.
   - **Display** : The generated image is displayed via the Streamlit interface.
-## Used technologies
+## Technologies
 - **MMS (Meta Speech-to-Text)** :  For the transcription of speech into text..
 - **NLLB (No Language Left Behind)** : For the translation of text from fon to french.
 - **Docker** : To containerize our Hugging Face models and deploy them efficiently.
