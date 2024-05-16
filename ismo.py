@@ -12,15 +12,17 @@ from io import BytesIO
 from PIL import Image
 from audio_recorder_streamlit import audio_recorder
 
+#StabilityAI API key
 stability_apikey=st.secrets["STABILITY_API"]
 
+#Initialization of client AzureOpenAI
 client = AzureOpenAI(
   azure_endpoint = "https://azureai-models.openai.azure.com/", 
   api_key=st.secrets["API_KEY"] ,  
   api_version="2024-02-15-preview"
 ) 
 
- 
+#Context used for Gpt translation 
 specifications = """
         - You are an expert AI translator specializing in translating text from Yoruba to English.
         - I want you to send me back only the translated text, nothing more.
@@ -28,7 +30,7 @@ specifications = """
         - Translate the input sentence from yoruba to english please
         """
 
-# Configuration de l'audio
+# Audio configuration
 CHUNK = 1024  # Nombre de frames par buffer
 FORMAT = pyaudio.paInt16  # Format des échantillons audio
 CHANNELS = 1  # Nombre de canaux
@@ -38,7 +40,7 @@ RECORD_SECONDS = 5  # Durée d'enregistrement
 # Initialisation de PyAudio
 audio = pyaudio.PyAudio()
  
-# Fonction d'enregistrement audio
+# Audio registering function
 def record_audio(duration=RECORD_SECONDS):
     stream = audio.open(format=FORMAT, channels=CHANNELS, rate=RATE, input=True, frames_per_buffer=CHUNK)
     st.write("Recording...")
@@ -49,6 +51,7 @@ def record_audio(duration=RECORD_SECONDS):
     audio_data = np.frombuffer(b''.join(frames), dtype=np.int16)
     return audio_data
 
+#Image generation function
 def image_generation(input):
     import requests
 
@@ -73,7 +76,7 @@ def image_generation(input):
         raise Exception(str(response.json()))
 
 
-
+#Streamlit interface configuration
 col1, col2 = st.columns([1, 6])
 
 with col1:
@@ -151,7 +154,7 @@ def send_to_api(url, data, files=None):
         return response.json().get('transcription', 'Transcription not found')
     else:
         return "Error in transcription"
- 
+ # Translation function
 def translate_to_english(text):
     prompt = "You are an Yoruba to English translator.You are an translation expert Yoruba English. The following sentence is in yoruba {text}.I want you to send me back only the translated text, nothing more."
     response = client.chat.completions.create(
@@ -164,11 +167,11 @@ def translate_to_english(text):
         )
     return response.choices[0].message.content
  
-# Interface Streamlit
+# Streamlit interface
 
 st.markdown('<p style="font-size:25px;">Select a language and an input method to begin.</p>', unsafe_allow_html=True)
 
-# Sélection de la langue
+# Language selection component in streamlit interface
 language = st.selectbox("Select Language", ["Yoruba", "Fon"])
  
 # Choix de la méthode d'entrée
@@ -236,7 +239,7 @@ if language == "Fon":
             # URL de l'API selon la langue sélectionnée
             api_url = "http://fon-s2t-api.francecentral.azurecontainer.io/speech-to-text/" 
             transcription = send_to_api(api_url, data={}, files={'file': open(tmpfile_name, 'rb')})
-            st.write("Transcription:")
+            #st.write("Transcription:")
             #st.write(transcription)
             api_translation_url="http://fon-t2t-api.francecentral.azurecontainer.io/translate/"
             request_body = {
@@ -245,7 +248,7 @@ if language == "Fon":
             response=requests.post(api_translation_url, json=request_body)
             response_data= response.json()
             translation=response_data.get('translated_text', 'Key not found')
-            st.write("Translation in French")
+            #st.write("Translation in French")
             #st.write(translation)
             image= image_generation(translation)
             st.image(image)
@@ -275,7 +278,7 @@ if language == "Fon":
             # URL de l'API selon la langue sélectionnée
             api_url = "http://fon-s2t-api.francecentral.azurecontainer.io/speech-to-text/"  
             transcription = send_to_api(api_url, data={}, files={'file': open(tmpfile_name, 'rb')})
-            st.write("Transcription:")
+            #st.write("Transcription:")
             #st.write(transcription)
             api_translation_url="http://fon-t2t-api.francecentral.azurecontainer.io/translate/"
             request_body = {
@@ -284,7 +287,7 @@ if language == "Fon":
             response=requests.post(api_translation_url, json=request_body)
             response_data= response.json()
             translation=response_data.get('translated_text', 'Key not found')
-            st.write("Translation in French")
+            #st.write("Translation in French")
             #st.write(translation)
             image= image_generation(translation)
             st.image(image)
