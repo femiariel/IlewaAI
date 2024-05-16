@@ -56,15 +56,15 @@ https://github.com/femiariel/IlewaAI.git
   - **API Integration**: We have deployed APIs for each model we use and call these APIs in our `ismo.py` to perform transcriptions and translations. These models are hosted using Azure Container Instances with their respective Docker images, enabling anyone to run our code regardless of their local computing power.
 
   - **Fon to French Translation Model**: 
-    - API: [http://fon-t2t-api.francecentral.azurecontainer.io/](http://fon-t2t-api.francecentral.azurecontainer.io/)
+    - API: [http://fon-t2t-api.francecentral.azurecontainer.io/](http://fon-t2t-api.francecentral.azurecontainer.io/docs/)
     - GitHub: [https://github.com/Ggasyd/fon-t2t-api](https://github.com/Ggasyd/fon-t2t-api)
   
   - **Fon to Fon Transcription Model**: 
-    - API: [http://fon-s2t-api.francecentral.azurecontainer.io/](http://fon-s2t-api.francecentral.azurecontainer.io/)
+    - API: [http://fon-s2t-api.francecentral.azurecontainer.io/](http://fon-s2t-api.francecentral.azurecontainer.io/docs/)
     - GitHub: [https://github.com/Ggasyd/fon-api](https://github.com/Ggasyd/fon-api)
   
   - **Yoruba to Yoruba Transcription Model**: 
-    - API: [http://yoruba-s2t-api.francecentral.azurecontainer.io/](http://yoruba-s2t-api.francecentral.azurecontainer.io/)
+    - API: [http://yoruba-s2t-api.francecentral.azurecontainer.io/](http://yoruba-s2t-api.francecentral.azurecontainer.io/docs/)
     - GitHub: [https://github.com/Ggasyd/ilewa-api](https://github.com/Ggasyd/ilewa-api)
   
   - **Devcontainer Setup**: A devcontainer is configured to ensure that all users can access the same dependencies, promoting consistency across development environments.
