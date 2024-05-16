@@ -63,7 +63,7 @@ https://github.com/femiariel/IlewaAI.git
     - API: [http://fon-s2t-api.francecentral.azurecontainer.io/](http://fon-s2t-api.francecentral.azurecontainer.io/)
     - GitHub: [https://github.com/Ggasyd/fon-api](https://github.com/Ggasyd/fon-api)
   
-  - **Yoruba to French Transcription Model**: 
+  - **Yoruba to Yoruba Transcription Model**: 
     - API: [http://yoruba-s2t-api.francecentral.azurecontainer.io/](http://yoruba-s2t-api.francecentral.azurecontainer.io/)
     - GitHub: [https://github.com/Ggasyd/ilewa-api](https://github.com/Ggasyd/ilewa-api)
   
