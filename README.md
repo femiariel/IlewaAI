@@ -46,7 +46,7 @@ https://github.com/femiariel/IlewaAI.git
 - **NLLB (No Language Left Behind)** : For the translation of text from fon to french.
 - **Docker** : To containerize our Hugging Face models and deploy them efficiently.
 - **Azure Container Instances** : To host the APIs for each model.
-- **GPT-4** : For the translation of text from yoruba to english.
+- **GPT-4 (Azure OpenAI)** : For the translation of text from yoruba to english.
 - **Stable Diffusion** : For generating images from text descriptions.
 - **Streamlit** : For creating the user interface and displaying the results.
 3. **User Interface** :
