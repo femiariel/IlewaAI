@@ -5,12 +5,12 @@ Benin Multimodal Hackhaton
 This project uses a series of technologies to transcribe speech into text, translate this text, and generate images from the translated text. The complete pipeline includes the following steps:
 1. **Speech to text transcription** with [MMS (Meta Speech-to-Text)](https://github.com/facebookresearch/fairseq/tree/main/examples/mms)
 2. **Text Translation** with [NLLB (No Language Left Behind)](https://github.com/facebookresearch/flores).
-3. **Image generation** from translated text with [Stable Diffusion](https://github.com/CompVis/stable-diffusion).
+3. **Image generation** from translated text with [Stable Diffusion](https://stability.ai/).
 4. **Display of the generated image** with [Streamlit](https://streamlit.io/).
-## Table des matières
+## Table of Content
 - [Installation](#installation)
 - [Utilisation](#utilisation)
-- [Used Technologies](#used technologies)
+- [Used Technologies](#usedtechnologies)
 - [Contribution](#contribution)
 - [Licence](#licence)
 ## Installation
@@ -18,8 +18,8 @@ To run this project locally, follow the following steps: :
 1. Clone this repository: :
   ```bash
   git clone
-https://github.com/votre-utilisateur/votre-depot.git
-  cd votre-depot
+https://github.com/femiariel/IlewaAI.git
+  cd IlewaAI
   ```
 2. Create and activate a virtual environment: :
   ```bash
@@ -31,26 +31,40 @@ https://github.com/votre-utilisateur/votre-depot.git
   pip install -r requirements.txt
   ```
 ## Usage
-1. **Launching the application:** :
+1. **Launching the application:** 
   ```bash
   streamlit run ismo.py
   ```
-2. **User Interface:** :
+2. **User Interface:** 
   - **Upload** : Upload an audio file containing speech in the local language.
   - **Transcription** : The speech is transcribed into text using MMS.
-  - **Traduction** : The text is translated into a language supported by Stable Diffusion using NLLB.
-  - **Génération d'image** : An image is generated from the translated text with Stable Diffusion.
-  - **Affichage** : The generated image is displayed via the Streamlit interface.
+  - **Translation** : The text is translated into a language supported by Stable Diffusion using NLLB.
+  - **Image generation** : An image is generated from the translated text with Stable Diffusion.
+  - **Display** : The generated image is displayed via the Streamlit interface.
 ## Used technologies
 - **MMS (Meta Speech-to-Text)** :  For the transcription of speech into text..
-- **NLLB (No Language Left Behind)** : For the translation of text.
+- **NLLB (No Language Left Behind)** : For the translation of text from fon to french.
+- **Docker** : To containerize our Hugging Face models and deploy them efficiently.
+- **GPT-4** : For the translation of text from yoruba to english.
 - **Stable Diffusion** : For generating images from text descriptions.
 - **Streamlit** : For creating the user interface and displaying the results.
 3. **User Interface** :
-  - **Interface** : We have deployed the application on streamlit cloud: the link to access it is : https://ilewaai.streamlit.app/
-  - **API** : We have deployed APIs for each model we use and we call these files in our ismo.py to perform the transcriptions and translations. These models have been deployed via Azure Container Instances thanks to their Docker image. This allows anyone to run our code even if they do not have the necessary computing power.
-  - **Fon to French translation model**: api : 'http://fon-t2t-api.francecentral.azurecontainer.io/'  and github: 'https://github.com/Ggasyd/fon-t2t-api'
-  -  **Fon to French transcription model** : api : 'http://fon-s2t-api.francecentral.azurecontainer.io/' et github: 'https://github.com/Ggasyd/fon-api'
-  -  **Yoruba to English transcription model** : api : 'http://yoruba-s2t-api.francecentral.azurecontainer.io/' et github : 'https://github.com/Ggasyd/ilewa-api'
-  -  **Devcontainer**: Setting up a devcontainer to ensure that users can have access to the same dependencies
+
+  - **Application Interface**: The application is hosted on Streamlit Cloud, accessible via this link: [https://ilewaai.streamlit.app/](https://ilewaai.streamlit.app/).
+
+  - **API Integration**: We have deployed APIs for each model we use and call these APIs in our `ismo.py` to perform transcriptions and translations. These models are hosted using Azure Container Instances with their respective Docker images, enabling anyone to run our code regardless of their local computing power.
+
+  - **Fon to French Translation Model**: 
+    - API: [http://fon-t2t-api.francecentral.azurecontainer.io/](http://fon-t2t-api.francecentral.azurecontainer.io/)
+    - GitHub: [https://github.com/Ggasyd/fon-t2t-api](https://github.com/Ggasyd/fon-t2t-api)
+  
+  - **Fon to French Transcription Model**: 
+    - API: [http://fon-s2t-api.francecentral.azurecontainer.io/](http://fon-s2t-api.francecentral.azurecontainer.io/)
+    - GitHub: [https://github.com/Ggasyd/fon-api](https://github.com/Ggasyd/fon-api)
+  
+  - **Yoruba to English Transcription Model**: 
+    - API: [http://yoruba-s2t-api.francecentral.azurecontainer.io/](http://yoruba-s2t-api.francecentral.azurecontainer.io/)
+    - GitHub: [https://github.com/Ggasyd/ilewa-api](https://github.com/Ggasyd/ilewa-api)
+  
+  - **Devcontainer Setup**: A devcontainer is configured to ensure that all users can access the same dependencies, promoting consistency across development environments.
 
