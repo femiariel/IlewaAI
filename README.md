@@ -42,9 +42,10 @@ https://github.com/femiariel/IlewaAI.git
   - **Image generation** : An image is generated from the translated text with Stable Diffusion.
   - **Display** : The generated image is displayed via the Streamlit interface.
 ## Technologies
-- **MMS (Meta Speech-to-Text)** :  For the transcription of speech into text..
+- **MMS (Meta Speech-to-Text)** :  For the transcription of speech into text.
 - **NLLB (No Language Left Behind)** : For the translation of text from fon to french.
 - **Docker** : To containerize our Hugging Face models and deploy them efficiently.
+- **Azure Container Instances** : To host the APIs for each model.
 - **GPT-4** : For the translation of text from yoruba to english.
 - **Stable Diffusion** : For generating images from text descriptions.
 - **Streamlit** : For creating the user interface and displaying the results.
