@@ -12,6 +12,13 @@ from io import BytesIO
 from PIL import Image
 from audio_recorder_streamlit import audio_recorder
 
+# Configuration de l'audio
+CHUNK = 1024  # Nombre de frames par buffer
+FORMAT = pyaudio.paInt16  # Format des échantillons audio
+CHANNELS = 1  # Nombre de canaux
+RATE = 16000  # Taux d'échantillonnage (échantillons par seconde)
+RECORD_SECONDS = 5  # Durée d'enregistrement
+ 
 
  
 # Fonction d'enregistrement audio
