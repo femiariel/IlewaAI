@@ -35,8 +35,8 @@ https://github.com/femiariel/IlewaAI.git
   ```bash
   streamlit run ismo.py
   ```
-2. **User Interface:** 
-  - **Upload** : Upload an audio file containing speech in the local language.
+2. **User Interface:**
+  - **Upload or record** : Upload or record an audio containing speech in the local language (Fon or Yoruba).
   - **Transcription** : The speech is transcribed into text using MMS.
   - **Translation** : The text is translated into a language supported by Stable Diffusion using NLLB.
   - **Image generation** : An image is generated from the translated text with Stable Diffusion.
