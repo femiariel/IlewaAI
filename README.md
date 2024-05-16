@@ -59,7 +59,7 @@ https://github.com/femiariel/IlewaAI.git
     - API: [http://fon-t2t-api.francecentral.azurecontainer.io/](http://fon-t2t-api.francecentral.azurecontainer.io/)
     - GitHub: [https://github.com/Ggasyd/fon-t2t-api](https://github.com/Ggasyd/fon-t2t-api)
   
-  - **Fon to French Transcription Model**: 
+  - **Fon to Fon Transcription Model**: 
     - API: [http://fon-s2t-api.francecentral.azurecontainer.io/](http://fon-s2t-api.francecentral.azurecontainer.io/)
     - GitHub: [https://github.com/Ggasyd/fon-api](https://github.com/Ggasyd/fon-api)
   
