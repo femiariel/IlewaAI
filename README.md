@@ -1,5 +1,5 @@
 # IlewaAI App
-Benin Multimodal Hackhaton
+Benin Multimodal and Multilingual Hackhaton
 
 # Project for Image Generation from Local Languages
 This project uses a series of technologies to transcribe speech into text, translate this text, and generate images from the translated text. The complete pipeline includes the following steps:
